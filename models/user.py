@@ -33,7 +33,7 @@ class User(BaseModel, Base):
         if 'password' in kwargs:
             self.password = self.hash_password(kwargs['password'])
 
-   def __setattr__(self, name, value):
+    def __setattr__(self, name, value):
         """sets a password with md5 encryption"""
         if name == "password":
             value = md5(value.encode()).hexdigest()
