@@ -4,12 +4,13 @@
 """
 from flask import Flask, jsonify
 from flask_cors import CORS
+from flasgger import Swagger
 from models import storage
 from api.v1.views import app_views
 from os import getenv
 
 app = Flask(__name__)
-CORS(app, origins="0.0.0.0")
+CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 app.register_blueprint(app_views)
 
 
